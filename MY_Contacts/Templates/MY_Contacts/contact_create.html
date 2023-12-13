@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create New Contact</title>
-    <!-- Add any additional head content or CSS links here -->
-</head>
-<body>
-    <h1>Create New Contact</h1>
+{% extends 'MY_Contacts/base.html' %}
 
+{% block title %}Create New Contact{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-success">Create New Contact</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Contact</button>
+        <table class="table table-bordered">
+            {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn btn-success">Save Contact</button>
     </form>
-    <a href="{% url 'MY_Contacts:contact_list' %}">Contact List</a>
-
-</body>
-</html>
+    <a href="{% url 'MY_Contacts:contact_list' %}" class="btn btn-secondary mt-2">Back to Contact List</a>
+</div>
+{% endblock %}
